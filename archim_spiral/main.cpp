@@ -58,25 +58,8 @@ int main(int argv, char** args) {
 		int indx = (y * w) + x;
 		//printf("Index: %d\n", indx);
 		
-		pixels[ (y * w) + x ] = color;
-		
-		while(SDL_PollEvent(&e)) {
-			if(e.type == SDL_QUIT) {
-				running = false;
-			}
-			if(e.type == SDL_KEYDOWN) {
-				switch(e.key.keysym.sym) {
-					case SDLK_LEFT:
-						x -= 1;
-						break;
-					case SDLK_RIGHT:
-						x += 1;
-						break;
-				}
-				printf("X: %d, Y: %d\n", x, y);
-			}
-		}
-		
+		// replace pixel with the specified color
+		pixels[ (y * w) + x ] = color;	
 		
 		SDL_BlitSurface(mySurface, NULL, gWinSurf, NULL);
 		SDL_UpdateWindowSurface( gWindow );
